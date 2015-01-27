@@ -22,107 +22,11 @@
 <body>
 
 	<section id="tree" class="container">
+	</section>
+
+	<section class="container">
 		<br>
-		<br>
-		<br>
-		<!-- block
-		<ul class="list-group inc-tree">
-			<li class="list-group-item headers">
-				<div class="row text-box">
-					<div class="col-lg-7 left">Category Name</div>
-					<div class="col-lg-2 right"># Items</div>
-					<div class="col-lg-3 center">Actions</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<div class="row text-box">
-					<div class="col-lg-7 left">
-						<a href="#" class="action-expand">
-							<i class="icon-minus-squared"></i>
-						</a>
-						<span>Categoria 1</span>
-					</div>
-					<div class="col-lg-2 right">50</div>
-					<div class="col-lg-3 row actions">
-						<a href="#" class="action-edit">
-							<i class="icon-pencil"></i>
-						</a>
-						<a href="#" class="action-add-child">
-							<i class="icon-flow-branch"></i>
-						</a>
-						<a href="#" class="action-delete">
-							<i class="icon-trash"></i>
-						</a>
-					</div>
-				</div>
-				<div class="row edit-box">
-					<div class="col-lg-9 left">
-						<div class="form-group">
-						    <label for="input-weight" class="control-label">Category Name</label>
-					        <input type="text" class="form-control " id="input-weight" placeholder="Weight">
-						</div>
-					</div>
-					<div class="col-lg-2 left">
-						<div class="form-group">
-						    <label for="input-weight" class="control-label left">Weight</label>
-					        <input type="text" class="form-control " id="input-weight" placeholder="Weight">
-						</div>
-					</div>
-					<div class="col-lg-1 row actions">
-						<button type="button" class="btn btn-primary btn-block action-save">Save</button>
-					</div>
-				</div>
-				<ul class="list-group inc-sub-tree">
-					<li class="list-group-item">
-						<div class="row text-box">
-							<div class="col-lg-7 left">
-								<a href="#" class="action-expand">
-									<i class="icon-plus-squared"></i>
-								</a>
-								<span>Categoria 1.1</span>
-							</div>
-							<div class="col-lg-2 right">50</div>
-							<div class="col-lg-3 row  visible actions">
-								<a href="#" class="action-edit">
-									<i class="icon-pencil"></i>
-								</a>
-								<a href="#" class="action-add-child">
-									<i class="icon-flow-branch"></i>
-								</a>
-								<a href="#" class="action-delete">
-									<i class="icon-trash"></i>
-								</a>
-							</div>
-						</div>
-						<ul class="list-group depth-two inc-sub-tree">
-							<li class="list-group-item">
-								<div class="row text-box">
-									<div class="col-lg-7 left">
-										<a href="#" class="action-expand">
-											<i class="icon-plus-squared"></i>
-										</a>
-										<span>Categoria 1.1.1</span>
-									</div>
-									<div class="col-lg-2 right">50</div>
-									<div class="col-lg-3 row  visible actions">
-										<a href="#" class="action-edit">
-											<i class="icon-pencil"></i>
-										</a>
-										<a href="#" class="action-add-child">
-											<i class="icon-flow-branch"></i>
-										</a>
-										<a href="#" class="action-delete">
-											<i class="icon-trash"></i>
-										</a>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-		-->
+		<button class="btn btn-default" id="refresh">Refrescar</button>
 	</section>
 
 	<script id="tree-root-template" type="text/template">
@@ -305,23 +209,28 @@
 			var newTree = new INCTree({
 				container: "#tree",
 				data: data,
-				onSave: function(object){
-					console.log("save", object);
-				},
-				onEdit: function(object){
-					console.log("edit", object);
-				},
-				onAdd: function(parent, object){
-					console.log("add");
+				onAddSave: function(parent, object, context){
+					console.log("ADD SAVE CALLBACK");
 					console.log("parent",parent);
 					console.log("object", object);
 				},
-				onDelete: function(object){
-					console.log("delete",object);
+				onEditSave: function(object, context){
+					console.log("EDIT SAVE CALLBACK");
+					console.log("object", object);
+				},
+				onDelete: function(object, context){
+					console.log("DELETE CALLBACK");
+					// console.log("delete",object);
+					console.log(context);
+
 				}
 			});
 
-			// console.log(newTree);
+			$("#refresh").click(function(){
+				console.log("refrescando el arbol");
+				newTree.refresh(data);
+			});
+
 		});
 	</script>
 </body>

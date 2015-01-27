@@ -8,16 +8,24 @@ $(document).on("ready", function(){
 		var defaults = {
 			container: "tree",
 			data: [],
-			onSave: function(){},
-			onEdit: function(){},
-			onAdd: function(){},
-			onDelete: function(){},
+			onAddSave: function(parent, object, context){},
+			onEditSave: function(object, context){},
+			onDelete: function(object, context){},
 			collapsedIcon: "icon-plus-squared",
 			expandedIcon: "icon-minus-squared",
 			leafIcon: "icon-minus-squared"
-
-
 		};
+
+		var defaultObj = {
+			category_id: "",
+			category_parent_id: "",
+			category_type: "",
+			level: "",
+			name: "",
+			period_type: "",
+			weight: null,
+			children: []
+		}
 
 		var options = $.extend(defaults, config, {});
 
@@ -30,10 +38,8 @@ $(document).on("ready", function(){
 
 
 		tree.init =  function() {
-
 			self.depth = 0;
 			self.INPUT_FLAG = false;
-
 			self.render();
 		}
 
@@ -148,7 +154,7 @@ $(document).on("ready", function(){
 				object = newObj;
 
 				$row.$box.$category.text(newObj.name);
-				options.onEdit(newObj);
+				options.onEditSave(newObj, self);
 				edit.remove();
 				self.INPUT_FLAG = false;
 			});
@@ -156,19 +162,24 @@ $(document).on("ready", function(){
 		}
 
 
-		this.makeAddBox = function($row, object){
+		this.makeAddBox = function($row, parent){
 			var add = $( templates.addbox );
+
+
 
 			add.$save = add.find(".action-save");
 			add.$category = add.find(".input-category");
 
 			add.$save.click(function(e){
 				var values = {
-					name: add.$category.val()
+					name: add.$category.val(),
+					category_parent_id: parent.category_id,
+					category_type: parent.category_type
 				};
 
-				var newObj = $.extend({}, object, values);
-				options.onSave(newObj);
+				var newObj = $.extend({}, defaultObj, values);
+
+				options.onAddSave(parent, newObj, self);
 				add.remove();
 				self.INPUT_FLAG = false;
 			});
@@ -193,14 +204,16 @@ $(document).on("ready", function(){
 			self.renderChildren( self.$root, options.data );
 		}
 
-		this.refresh = function(newData){
+		this.refresh = function(newData) {
+			self.depth = 0;
+			self.INPUT_FLAG = false;
 			$(options.container).empty();
 			self.$root = self.makeRoot();
 			self.renderChildren( self.$root, newData );
 		}
 
 		this.previousDelete = function($row, object){
-			options.onDelete(object);
+			options.onDelete(object, self);
 		}
 
 		tree.init();
