@@ -1,0 +1,110 @@
+.inc-tree li {
+	padding: 0;
+	border-radius: 0px;
+	/*transition: .25s all linear;*/
+}
+
+.inc-tree li:hover:not(.headers) {
+	cursor: pointer;
+	/*background-color: #efefef;*/
+
+}
+
+.inc-tree {
+	border-radius: 0px;
+	margin-bottom: 0;
+}
+
+.inc-tree.collapsed li {
+	display: none;
+}
+
+.inc-tree.depth-1 .edit-box,
+.inc-tree.depth-1 .text-box {
+	padding-left: 50px;
+}
+
+.inc-tree.depth-2 .edit-box,
+.inc-tree.depth-2 .text-box {
+	padding-left: 100px;
+}
+
+.inc-tree.depth-3 .edit-box,
+.inc-tree.depth-3 .text-box {
+	padding-left: 150px;
+}
+
+.inc-tree.depth-4 .edit-box,
+.inc-tree.depth-4 .text-box {
+	padding-left: 150px;
+}
+
+.inc-tree.depth-5 .edit-box,
+.inc-tree.depth-6 .text-box {
+	padding-left: 200px;
+}
+
+.inc-tree .headers {
+	padding: 15px;
+	font-weight: bold;
+}
+
+.inc-tree .text-box {
+	padding: 15px;
+}
+
+.inc-tree .edit-box {
+	padding-left: 15px;
+}
+
+.inc-tree .edit-box .action-save {
+	margin-top: 25px;
+}
+.inc-tree .edit-box .control-label {
+	color: gray;
+	font-weight: bold;
+	font-size: .75em;
+}
+
+.inc-tree .list-group-item {
+	border-radius: 0px;
+}
+
+
+.inc-tree .list-group-item {
+	border-left: none;
+	border-right: none;
+}
+
+.inc-tree .left {
+	text-align: left;
+}
+
+.inc-tree .right {
+	text-align: right;
+}
+
+.inc-tree .center {
+	text-align: center;
+}
+
+.inc-tree [class^="action-"] {
+	font-size: 22px;
+	margin: -4px 0;
+	display: inline-block;
+}
+
+.inc-tree .actions.visible a {
+	display: inline-block;
+	opacity: 1;
+}
+
+.inc-tree .actions a {
+	float: right;
+	display: inline-block;
+	font-size: 22px;
+	padding: 0 8px;
+	margin: -5px 0;
+	display: none;
+	opacity: 0;
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>INCTree</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/inctree.css">
+
+	<!-- icon block-->
+	<link rel="stylesheet" href="css/animation.css">
+	<link rel="stylesheet" href="css/icon.css">
+	<link rel="stylesheet" href="css/icon-codes.css">
+	<link rel="stylesheet" href="css/icon-embedded.css">
+	<link rel="stylesheet" href="css/icon-ie7.css">
+	<link rel="stylesheet" href="css/icon-ie7-codes.css">
+
+	<!-- icon prevoius js-->
+	<script src="js/jquery.js"></script>
+
+</head>
+
+<body>
+
+	<section id="tree" class="container">
+		<br>
+		<br>
+		<br>
+		<!-- block
+		<ul class="list-group inc-tree">
+			<li class="list-group-item headers">
+				<div class="row text-box">
+					<div class="col-lg-7 left">Category Name</div>
+					<div class="col-lg-2 right"># Items</div>
+					<div class="col-lg-3 center">Actions</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row text-box">
+					<div class="col-lg-7 left">
+						<a href="#" class="action-expand">
+							<i class="icon-minus-squared"></i>
+						</a>
+						<span>Categoria 1</span>
+					</div>
+					<div class="col-lg-2 right">50</div>
+					<div class="col-lg-3 row actions">
+						<a href="#" class="action-edit">
+							<i class="icon-pencil"></i>
+						</a>
+						<a href="#" class="action-add-child">
+							<i class="icon-flow-branch"></i>
+						</a>
+						<a href="#" class="action-delete">
+							<i class="icon-trash"></i>
+						</a>
+					</div>
+				</div>
+				<div class="row edit-box">
+					<div class="col-lg-9 left">
+						<div class="form-group">
+						    <label for="input-weight" class="control-label">Category Name</label>
+					        <input type="text" class="form-control " id="input-weight" placeholder="Weight">
+						</div>
+					</div>
+					<div class="col-lg-2 left">
+						<div class="form-group">
+						    <label for="input-weight" class="control-label left">Weight</label>
+					        <input type="text" class="form-control " id="input-weight" placeholder="Weight">
+						</div>
+					</div>
+					<div class="col-lg-1 row actions">
+						<button type="button" class="btn btn-primary btn-block action-save">Save</button>
+					</div>
+				</div>
+				<ul class="list-group inc-sub-tree">
+					<li class="list-group-item">
+						<div class="row text-box">
+							<div class="col-lg-7 left">
+								<a href="#" class="action-expand">
+									<i class="icon-plus-squared"></i>
+								</a>
+								<span>Categoria 1.1</span>
+							</div>
+							<div class="col-lg-2 right">50</div>
+							<div class="col-lg-3 row  visible actions">
+								<a href="#" class="action-edit">
+									<i class="icon-pencil"></i>
+								</a>
+								<a href="#" class="action-add-child">
+									<i class="icon-flow-branch"></i>
+								</a>
+								<a href="#" class="action-delete">
+									<i class="icon-trash"></i>
+								</a>
+							</div>
+						</div>
+						<ul class="list-group depth-two inc-sub-tree">
+							<li class="list-group-item">
+								<div class="row text-box">
+									<div class="col-lg-7 left">
+										<a href="#" class="action-expand">
+											<i class="icon-plus-squared"></i>
+										</a>
+										<span>Categoria 1.1.1</span>
+									</div>
+									<div class="col-lg-2 right">50</div>
+									<div class="col-lg-3 row  visible actions">
+										<a href="#" class="action-edit">
+											<i class="icon-pencil"></i>
+										</a>
+										<a href="#" class="action-add-child">
+											<i class="icon-flow-branch"></i>
+										</a>
+										<a href="#" class="action-delete">
+											<i class="icon-trash"></i>
+										</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		-->
+	</section>
+
+	<script id="tree-root-template" type="text/template">
+		<ul class="list-group inc-tree">
+			<li class="list-group-item headers">
+				<div class="row text-box">
+					<div class="col-lg-7 left">Category Name</div>
+					<div class="col-lg-2 right"># Items</div>
+					<div class="col-lg-3 center">Actions</div>
+				</div>
+			</li>
+		</ul>
+	</script>
+
+	<script id="tree-child-template" type="text/template">
+		<li class="list-group-item">
+			<div class="row text-box">
+				<div class="col-lg-7 left">
+					<a href="#" class="action-expand">
+						<i class="icon-minus-squared"></i>
+					</a>
+					<span class="category-name">Categoria 1</span>
+				</div>
+				<div class="col-lg-2 right" class="weight">50</div>
+				<div class="col-lg-3 row actions">
+					<a href="#" class="action-edit">
+						<i class="icon-pencil"></i>
+					</a>
+					<a href="#" class="action-add-child">
+						<i class="icon-flow-branch"></i>
+					</a>
+					<a href="#" class="action-delete">
+						<i class="icon-trash"></i>
+					</a>
+				</div>
+			</div>
+			<ul class="list-group inc-tree"></ul>
+		</li>
+	</script>
+
+
+	<script id="tree-addbox-template" type="text/template">
+		<div class="row edit-box">
+			<div class="col-lg-11 left">
+				<div class="form-group">
+				    <label class="control-label">Category Name</label>
+			        <input type="text" class="form-control input-category" >
+				</div>
+			</div>
+			<div class="col-lg-1 row actions">
+				<button type="button" class="btn btn-primary btn-block action-save">Save</button>
+			</div>
+		</div>
+	</script>
+
+	<script id="tree-editbox-template" type="text/template">
+		<div class="row edit-box">
+			<div class="col-lg-9 left">
+				<div class="form-group">
+				    <label class="control-label">Category Name</label>
+			        <input type="text" class="form-control input-category">
+				</div>
+			</div>
+			<div class="col-lg-2 left">
+				<div class="form-group">
+				    <label class="control-label left">Weight</label>
+			        <input type="text" class="form-control input-weight">
+				</div>
+			</div>
+			<div class="col-lg-1 row actions">
+				<button type="button" class="btn btn-primary btn-block action-save">Save</button>
+			</div>
+		</div>
+	</script>
+
+
+
+	<!--
+	<script src="js/bootstrap.js"></script>
+	-->
+	<script src="js/INCTree.js"></script>
+	<script>
+		$(document).on("ready", function(){
+			var data = [
+				{
+					category_id: "1",
+					category_parent_id: "0",
+					category_type: "LISTING",
+					level: "1",
+					name: "LISTING",
+					period_type: "0",
+					weight: null,
+					children: [
+						{
+							category_id: "1.1",
+							category_parent_id: "0",
+							category_type: "LISTING",
+							level: "1",
+							name: "LISTING 1.1",
+							period_type: "0",
+							weight: null,
+							children: []
+						},{
+							category_id: "1.2",
+							category_parent_id: "0",
+							category_type: "LISTING",
+							level: "1",
+							name: "LISTING 1.2",
+							period_type: "0",
+							weight: null,
+							children: [
+								{
+									category_id: "1.2.1",
+									category_parent_id: "0",
+									category_type: "LISTING",
+									level: "1",
+									name: "LISTING 1.2.1",
+									period_type: "0",
+									weight: null,
+									children: [
+										{
+											category_id: "1.2.2.1",
+											category_parent_id: "0",
+											category_type: "LISTING",
+											level: "1",
+											name: "LISTING 1.2.2.1",
+											period_type: "0",
+											weight: null,
+											children: []
+										}
+									]
+								},{
+									category_id: "1.2.2",
+									category_parent_id: "0",
+									category_type: "LISTING",
+									level: "1",
+									name: "LISTING 1.2.2",
+									period_type: "0",
+									weight: null,
+									children: []
+								}
+							]
+						}
+					],
+
+				},
+				{
+					category_id: "2",
+					category_parent_id: "0",
+					category_type: "LISTING",
+					level: "1",
+					name: "LISTING 2",
+					period_type: "0",
+					weight: null,
+					children: [
+						{
+							category_id: "2.1",
+							category_parent_id: "0",
+							category_type: "LISTING",
+							children: [],
+							level: "1",
+							name: "LISTING 2.1",
+							period_type: "0",
+							weight: null
+						},{
+							category_id: "2.2",
+							category_parent_id: "0",
+							category_type: "LISTING",
+							children: [],
+							level: "1",
+							name: "LISTING 2.2",
+							period_type: "0",
+							weight: null
+						}
+					]
+				}
+			];
+
+
+			var newTree = new INCTree({
+				container: "#tree",
+				data: data,
+				onSave: function(object){
+					console.log("save", object);
+				},
+				onEdit: function(object){
+					console.log("edit", object);
+				},
+				onAdd: function(parent, object){
+					console.log("add");
+					console.log("parent",parent);
+					console.log("object", object);
+				},
+				onDelete: function(object){
+					console.log("delete",object);
+				}
+			});
+
+			// console.log(newTree);
+		});
+	</script>
+</body>
+</html>
