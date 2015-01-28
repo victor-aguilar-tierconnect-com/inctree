@@ -16,9 +16,9 @@ INCTree = function (config) {
         },
         onDelete: function (object, context) {
         },
-        collapsedIcon: "icon-plus-squared",
-        expandedIcon: "icon-minus-squared",
-        leafIcon: "icon-minus-squared",
+        collapsedIcon: "ic-plus-squared",
+        expandedIcon: "ic-minus-squared",
+        leafIcon: "ic-minus-squared",
         periods: [
         	"Both",
         	"Classic",
