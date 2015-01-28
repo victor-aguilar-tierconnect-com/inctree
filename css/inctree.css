@@ -1,3 +1,15 @@
+.inc-tree.tree-container {
+	border-left: 1px solid #efefef;
+	border-right: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+}
+.inc-tree .unbordered {
+	border-bottom: none;
+}
+.inc-tree .highlinted {
+	background-color: #efefef;
+}
+
 .inc-tree li {
 	padding: 0;
 	border-radius: 0px;
@@ -12,36 +24,71 @@
 
 .inc-tree {
 	border-radius: 0px;
-	margin-bottom: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .inc-tree.collapsed li {
 	display: none;
 }
 
-.inc-tree.depth-1 .edit-box,
 .inc-tree.depth-1 .text-box {
 	padding-left: 50px;
 }
+.inc-tree.depth-1 .edit-box{
+	margin-left: 50px;
+}
 
-.inc-tree.depth-2 .edit-box,
 .inc-tree.depth-2 .text-box {
 	padding-left: 100px;
 }
 
-.inc-tree.depth-3 .edit-box,
+.inc-tree.depth-2 .edit-box{
+	margin-left: 100px;
+}
+
+
+
 .inc-tree.depth-3 .text-box {
 	padding-left: 150px;
 }
 
-.inc-tree.depth-4 .edit-box,
-.inc-tree.depth-4 .text-box {
-	padding-left: 150px;
+.inc-tree.depth-3 .edit-box{
+	margin-left: 150px;
 }
+
+
+.inc-tree.depth-4 .text-box {
+	padding-left: 200px;
+}
+
+.inc-tree.depth-4 .edit-box{
+	margin-left: 200px;
+}
+
 
 .inc-tree.depth-5 .edit-box,
 .inc-tree.depth-6 .text-box {
 	padding-left: 200px;
+}
+
+
+.inc-tree .edit-box .action-close,
+.inc-tree .text-box .action-close {
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+	color: gray;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	opacity: 0.3;
+	transition: 0.1s all linear;
+}
+
+.inc-tree .edit-box .action-close:hover,
+.inc-tree .text-box .action-close:hover {
+	opacity: 0.8;
 }
 
 .inc-tree .headers {
@@ -56,10 +103,27 @@
 .inc-tree .edit-box {
 	padding-left: 15px;
 }
+.inc-tree .add-box,
+.inc-tree .edit-box {
+	border: 1px solid #efefef !important;
+	border-radius: 5px;
+	margin: 0px;
+	box-shadow: 0 0 8px #888;
+	z-index: 10;
+	margin-bottom: 5px;
+	position: relative;
+}
 
+.inc-tree .edit-box .action-cancel,
 .inc-tree .edit-box .action-save {
 	margin-top: 25px;
+	display: inline-block;
+	width: 48%;
 }
+.inc-tree .edit-box .period-type {
+	/*margin-top: 25px;*/
+}
+
 .inc-tree .edit-box .control-label {
 	color: gray;
 	font-weight: bold;

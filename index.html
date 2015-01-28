@@ -20,7 +20,7 @@
 </head>
 
 <body>
-
+	<h1>ARBOL</h1>
 	<section id="tree" class="container">
 	</section>
 
@@ -30,11 +30,11 @@
 	</section>
 
 	<script id="tree-root-template" type="text/template">
-		<ul class="list-group inc-tree">
+		<ul class="list-group tree-container inc-tree">
 			<li class="list-group-item headers">
 				<div class="row text-box">
 					<div class="col-lg-7 left">Category Name</div>
-					<div class="col-lg-2 right"># Items</div>
+					<div class="col-lg-2 center">Period type</div>
 					<div class="col-lg-3 center">Actions</div>
 				</div>
 			</li>
@@ -46,11 +46,12 @@
 			<div class="row text-box">
 				<div class="col-lg-7 left">
 					<a href="#" class="action-expand">
-						<i class="icon-minus-squared"></i>
+						<i class="icon-plus-squared"></i>
 					</a>
 					<span class="category-name">Categoria 1</span>
 				</div>
-				<div class="col-lg-2 right" class="weight">50</div>
+				<div class="col-lg-2 center" class="weight">Both</div>
+
 				<div class="col-lg-3 row actions">
 					<a href="#" class="action-edit">
 						<i class="icon-pencil"></i>
@@ -63,41 +64,68 @@
 					</a>
 				</div>
 			</div>
-			<ul class="list-group inc-tree"></ul>
+			<ul class="list-group inc-tree collapsed"></ul>
 		</li>
 	</script>
 
 
 	<script id="tree-addbox-template" type="text/template">
 		<div class="row edit-box">
-			<div class="col-lg-11 left">
+			<div class="col-lg-7 left">
 				<div class="form-group">
 				    <label class="control-label">Category Name</label>
 			        <input type="text" class="form-control input-category" >
 				</div>
 			</div>
-			<div class="col-lg-1 row actions">
-				<button type="button" class="btn btn-primary btn-block action-save">Save</button>
+			<div class="col-lg-2">
+				<label class="control-label left">Period Type</label>
+				<select name="period-type" class="period-type form-control">
+					<option value=""></option>
+				</select>
+			</div>
+			<div class="col-lg-1 left">
+				<div class="form-group">
+				    <label class="control-label left">Weight</label>
+			        <input type="text" class="form-control input-weight">
+				</div>
+			</div>
+			<div class="col-lg-2 row actions">
+				<button type="button" class="btn btn-primary  action-save">Save</button>
+				<button type="button" class="btn btn-danger  action-cancel">Cancel</button>
+			</div>
+
+			<div class="action-close">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAnNCSVQICFXsRgQAAAAJcEhZcwAABuwAAAbsAR51ODUAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAA40lEQVQYGQXBMUsUAACA0Re0ODSYXNHkpIcFkYJNgrNtQovzrUdFWwgN4ij4A/wzjUHLTQ7e1gkHKqgh6FB+vSfx0YmNJEkMHfmQiAPJna0k8daVZBy+SZI/3ideu5AkI6aSJNfWrZpLkpzxVZIkl84lSXIo9iVJkiTJsScSnz1KkiTJ90QSI/8kSfLoUxJJvHIuSZKZQRKJgVNJkiQTi4l4biJJkiT56VlY8EuS5NqNJMkPT9mTJLnwzoYrSZIdVj1IMjNMvDGX5NZLseuvTC0niRW/5d52JDZ9sZQkiRfG1pL/Ma/WHnWiibcAAAAASUVORK5CYII="/>
 			</div>
 		</div>
 	</script>
 
 	<script id="tree-editbox-template" type="text/template">
 		<div class="row edit-box">
-			<div class="col-lg-9 left">
+			<div class="col-lg-7 left">
 				<div class="form-group">
 				    <label class="control-label">Category Name</label>
 			        <input type="text" class="form-control input-category">
 				</div>
 			</div>
-			<div class="col-lg-2 left">
+			<div class="col-lg-2">
+				<label class="control-label left">Period Type</label>
+				<select name="period-type" class="period-type form-control">
+					<option value=""></option>
+				</select>
+			</div>
+			<div class="col-lg-1 left">
 				<div class="form-group">
 				    <label class="control-label left">Weight</label>
 			        <input type="text" class="form-control input-weight">
 				</div>
 			</div>
-			<div class="col-lg-1 row actions">
+			<div class="col-lg-2 row actions">
 				<button type="button" class="btn btn-primary btn-block action-save">Save</button>
+				<button type="button" class="btn btn-danger  action-cancel">Cancel</button>
+			</div>
+			<div class="action-close">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAnNCSVQICFXsRgQAAAAJcEhZcwAABuwAAAbsAR51ODUAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAA40lEQVQYGQXBMUsUAACA0Re0ODSYXNHkpIcFkYJNgrNtQovzrUdFWwgN4ij4A/wzjUHLTQ7e1gkHKqgh6FB+vSfx0YmNJEkMHfmQiAPJna0k8daVZBy+SZI/3ideu5AkI6aSJNfWrZpLkpzxVZIkl84lSXIo9iVJkiTJsScSnz1KkiTJ90QSI/8kSfLoUxJJvHIuSZKZQRKJgVNJkiQTi4l4biJJkiT56VlY8EuS5NqNJMkPT9mTJLnwzoYrSZIdVj1IMjNMvDGX5NZLseuvTC0niRW/5d52JDZ9sZQkiRfG1pL/Ma/WHnWiibcAAAAASUVORK5CYII="/>
 			</div>
 		</div>
 	</script>
@@ -117,7 +145,7 @@
 					category_type: "LISTING",
 					level: "1",
 					name: "LISTING",
-					period_type: "0",
+					period_type: "1",
 					weight: null,
 					children: [
 						{
@@ -224,6 +252,7 @@
 					console.log(context);
 
 				}
+
 			});
 
 			$("#refresh").click(function(){
